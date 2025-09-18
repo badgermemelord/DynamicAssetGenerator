@@ -1,7 +1,7 @@
 package io.github.lukebemish.dynamic_asset_generator.fabric;
 
-import io.github.lukebemish.dynamic_asset_generator.platform.services.IPlatform;
-import dev.lukebemish.dynamicassetgenerator.impl.platform.services.Platform;
+import io.github.lukebemish.dynamicassetgenerator.impl.DynamicAssetGenerator;
+import io.github.lukebemish.dynamicassetgenerator.impl.platform.services.Platform;
 import com.google.auto.service.AutoService;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -20,12 +20,12 @@ public class PlatformImpl implements IPlatform {
 @AutoService(Platform.class)
 public class PlatformImpl implements Platform {
     public Path getConfigFolder() {
-        return QuiltLoader.getConfigDir();
+        return FabricLoader.getInstance().getConfigDir();
     }
 
     @Override
     public Path getModDataFolder() {
-        return QuiltLoader.getGameDir().resolve("mod_data/"+ DynamicAssetGenerator.MOD_ID);
+        return FabricLoader.getInstance().getGameDir().resolve("mod_data/"+ DynamicAssetGenerator.MOD_ID);
     }
 
 }

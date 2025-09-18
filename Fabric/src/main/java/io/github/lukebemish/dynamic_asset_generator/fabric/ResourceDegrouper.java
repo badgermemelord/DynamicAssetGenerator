@@ -9,7 +9,7 @@ import net.minecraft.server.packs.PackResources;
 import java.util.ArrayList;
 import java.util.List;
 
-@AutoService(IResourceDegrouper.class)
+/*@AutoService(IResourceDegrouper.class)
 public class ResourceDegrouper implements IResourceDegrouper {
     public List<? extends PackResources> unpackPacks(List<? extends PackResources> packs) {
         if (packs.stream().noneMatch(pack->pack instanceof GroupResourcePack)) {
@@ -24,5 +24,18 @@ public class ResourceDegrouper implements IResourceDegrouper {
             }
         }
         return outPacks;
+    }
+}*/
+
+@AutoService(io.github.lukebemish.dynamicassetgenerator.impl.platform.services.ResourceDegrouper.class)
+public class ResourceDegrouperImpl implements io.github.lukebemish.dynamicassetgenerator.impl.platform.services.ResourceDegrouper {
+    public List<? extends PackResources> unpackPacks(List<? extends PackResources> packs) {
+        ArrayList<PackResources> packsOut = new ArrayList<>();
+        packs.forEach(pack -> {
+            if (pack instanceof GroupResourcePack groupResourcePack) {
+                packsOut.addAll(groupResourcePack.getPacks());
+            } else packsOut.add(pack);
+        });
+        return packsOut;
     }
 }
