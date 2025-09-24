@@ -1,7 +1,6 @@
 package io.github.lukebemish.dynamic_asset_generator.fabric;
 
 import com.google.auto.service.AutoService;
-import io.github.lukebemish.dynamic_asset_generator.fabric.mixin.IGroupResourcePackMixin;
 import io.github.lukebemish.dynamic_asset_generator.platform.services.IResourceDegrouper;
 import net.fabricmc.fabric.impl.resource.loader.GroupResourcePack;
 import net.minecraft.server.packs.PackResources;
@@ -27,8 +26,8 @@ public class ResourceDegrouper implements IResourceDegrouper {
     }
 }*/
 
-@AutoService(io.github.lukebemish.dynamicassetgenerator.impl.platform.services.ResourceDegrouper.class)
-public class ResourceDegrouperImpl implements io.github.lukebemish.dynamicassetgenerator.impl.platform.services.ResourceDegrouper {
+@AutoService(io.github.lukebemish.dynamic_asset_generator.impl.platform.services.ResourceDegrouper.class)
+public class ResourceDegrouperImpl implements io.github.lukebemish.dynamic_asset_generator.impl.platform.services.ResourceDegrouper {
     public List<? extends PackResources> unpackPacks(List<? extends PackResources> packs) {
         ArrayList<PackResources> packsOut = new ArrayList<>();
         packs.forEach(pack -> {
@@ -38,4 +37,16 @@ public class ResourceDegrouperImpl implements io.github.lukebemish.dynamicassetg
         });
         return packsOut;
     }
+
+/*@AutoService(io.github.lukebemish.dynamic_asset_generator.impl.platform.services.ResourceDegrouper.class)
+public class ResourceDegrouperImpl implements io.github.lukebemish.dynamic_asset_generator.impl.platform.services.ResourceDegrouper {
+    public List<? extends PackResources> unpackPacks(List<? extends PackResources> packs) {
+        ArrayList<PackResources> packsOut = new ArrayList<>();
+        packs.forEach(pack -> {
+            if (pack instanceof GroupResourcePack groupResourcePack) {
+                packsOut.addAll(groupResourcePack.getPacks());
+            } else packsOut.add(pack);
+        });
+        return packsOut;
+    }*/
 }

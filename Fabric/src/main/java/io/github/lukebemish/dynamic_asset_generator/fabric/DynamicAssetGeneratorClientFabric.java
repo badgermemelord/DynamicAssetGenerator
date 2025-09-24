@@ -1,9 +1,8 @@
 package io.github.lukebemish.dynamic_asset_generator.fabric;
 
-import io.github.lukebemish.dynamic_asset_generator.DynamicAssetGenerator;
-import io.github.lukebemish.dynamic_asset_generator.DynamicAssetGeneratorClient;
-import io.github.lukebemish.dynamic_asset_generator.client.DynAssetGenClientPlanner;
-import io.github.lukebemish.dynamic_asset_generator.client.api.PaletteExtractor;
+import io.github.lukebemish.dynamic_asset_generator.impl.DynamicAssetGenerator;
+import io.github.lukebemish.dynamic_asset_generator.impl.client.DynamicAssetGeneratorClient;
+
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.api.ClientModInitializer;
@@ -19,7 +18,8 @@ public class DynamicAssetGeneratorClientFabric implements ClientModInitializer {
     public static RuntimeResourcePack RESOURCE_PACK;
     @Override
     public void onInitializeClient() {
-        RRPCallback.AFTER_VANILLA.register(a -> {
+
+/*        RRPCallback.AFTER_VANILLA.register(a -> {
             PaletteExtractor.refresh();
             RESOURCE_PACK = RuntimeResourcePack.create(DynamicAssetGenerator.CLIENT_PACK);
             Map<ResourceLocation, Supplier<InputStream>> map = DynAssetGenClientPlanner.getResources();
@@ -37,7 +37,7 @@ public class DynamicAssetGeneratorClientFabric implements ClientModInitializer {
                 }
             }
             a.add(RESOURCE_PACK);
-        });
+        });*/
         DynamicAssetGeneratorClient.init();
     }
 }

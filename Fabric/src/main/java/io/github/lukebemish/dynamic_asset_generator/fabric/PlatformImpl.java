@@ -1,7 +1,7 @@
 package io.github.lukebemish.dynamic_asset_generator.fabric;
 
-import io.github.lukebemish.dynamicassetgenerator.impl.DynamicAssetGenerator;
-import io.github.lukebemish.dynamicassetgenerator.impl.platform.services.Platform;
+import io.github.lukebemish.dynamic_asset_generator.impl.DynamicAssetGenerator;
+import io.github.lukebemish.dynamic_asset_generator.impl.platform.services.Platform;
 import com.google.auto.service.AutoService;
 import net.fabricmc.loader.api.FabricLoader;
 
