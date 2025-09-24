@@ -18,7 +18,7 @@ public class GeneratedPackReloadListener implements SimpleSynchronousResourceRel
 
     @Override
     public ResourceLocation getFabricId() {
-        return new ResourceLocation("yourmodid", "generated_pack_reload");
+        return new ResourceLocation(DynamicAssetGenerator.MOD_ID, DynamicAssetGeneratorFabric.DATA_PACK.packId());
     }
 
     @Override
@@ -27,6 +27,9 @@ public class GeneratedPackReloadListener implements SimpleSynchronousResourceRel
         DynamicAssetGenerator.CACHES.forEach((location, info) -> {
             if (info.cache().getPackType() == net.minecraft.server.packs.PackType.SERVER_DATA) {
                 // Your regeneration logic here
+            }
+            if (info.cache().getPackType() == net.minecraft.server.packs.PackType.CLIENT_RESOURCES) {
+                // Client-specific regeneration logic here
             }
         });
     }

@@ -60,8 +60,8 @@ public class MyGroupResourcePack implements PackResources {
         }
     }
 
-    /**
-     * Delegate getResource: returns the first non-null IoSupplier<InputStream> from children.
+    /*
+      Delegate getResource: returns the first non-null IoSupplier<InputStream> from children.
      */
     @Override
     @Nullable

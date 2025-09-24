@@ -6,6 +6,7 @@ import io.github.lukebemish.dynamic_asset_generator.impl.client.DynamicAssetGene
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 
@@ -19,7 +20,20 @@ public class DynamicAssetGeneratorClientFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-/*        RRPCallback.AFTER_VANILLA.register(a -> {
+        DynamicAssetGeneratorClient.init();
+        ResourceManagerHelper.get(PackType.CLIENT_RESOURCES)
+                .registerReloadListener(new GeneratedPackReloadListener());
+    }
+}
+
+
+/*
+        ResourceManagerHelper.get(PackType.CLIENT_RESOURCES)
+                .registerReloadListener(new GeneratedPackReloadListener());
+
+
+
+        RRPCallback.AFTER_VANILLA.register(a -> {
             PaletteExtractor.refresh();
             RESOURCE_PACK = RuntimeResourcePack.create(DynamicAssetGenerator.CLIENT_PACK);
             Map<ResourceLocation, Supplier<InputStream>> map = DynAssetGenClientPlanner.getResources();
@@ -37,7 +51,5 @@ public class DynamicAssetGeneratorClientFabric implements ClientModInitializer {
                 }
             }
             a.add(RESOURCE_PACK);
-        });*/
-        DynamicAssetGeneratorClient.init();
-    }
-}
+        });
+*/

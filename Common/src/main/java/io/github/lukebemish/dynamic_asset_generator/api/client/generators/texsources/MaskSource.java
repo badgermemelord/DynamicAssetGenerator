@@ -21,7 +21,7 @@ import java.util.Objects;
 
 /**
  * A {@link TexSource} that modifies the alpha channel of a provided texture source based on the alpha channel of the
- * provided mask. The sources in {@link dev.lukebemish.dynamicassetgenerator.api.client.generators.texsources.mask} may
+ * provided mask. The sources in {@link io.github.lukebemish.dynamic_asset_generator.api.client.generators.texsources.mask} may
  * be useful for creating masks.
  */
 public final class MaskSource implements TexSource {
