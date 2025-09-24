@@ -1,18 +1,18 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "dev.lukebemish.dynamicassetgenerator.mixin",
+  "package": "io.github.lukebemish.dynamic_asset_generator.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "io.github.lukebemish.dynamicassetgenerator.mixin.PackRepositoryMixin",
-    "io.github.lukebemish.dynamicassetgenerator.mixin.MultiPackResourceManagerMixin",
-    "io.github.lukebemish.dynamicassetgenerator.mixin.ReloadableResourceManagerMixin"
+    "PackRepositoryMixin",
+    "MultiPackResourceManagerMixin",
+    "ReloadableResourceManagerMixin"
   ],
   "client": [
-    "io.github.lukebemish.dynamicassetgenerator.mixin.MinecraftMixin",
-    "io.github.lukebemish.dynamicassetgenerator.mixin.SpriteSourcesAccessor",
-    "io.github.lukebemish.dynamicassetgenerator.mixin.SpriteResourceLoaderOutputMixin",
-    "io.github.lukebemish.dynamicassetgenerator.mixin.SpriteResourceLoaderMixin"
+    "MinecraftMixin",
+    "SpriteSourcesAccessor",
+    "SpriteResourceLoaderOutputMixin",
+    "SpriteResourceLoaderMixin"
   ],
   "server": [],
   "injectors": {

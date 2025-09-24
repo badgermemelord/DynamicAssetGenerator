@@ -1,6 +1,6 @@
 package io.github.lukebemish.dynamic_asset_generator.fabric;
 
-import io.github.lukebemish.dynamic_asset_generator.impl.DynAssetGenServerPlanner;
+//import io.github.lukebemish.dynamic_asset_generator.impl.DynAssetGenServerPlanner;
 import io.github.lukebemish.dynamic_asset_generator.impl.DynamicAssetGenerator;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
@@ -81,6 +81,7 @@ public class DynamicAssetGeneratorFabric implements ModInitializer {
 
         // Hook into the datapack pipeline
         ResourceManagerHelper.get(PackType.SERVER_DATA)
-                .registerReloadListener(new GeneratedPackReloadListener(PackType.SERVER_DATA));
+                //.registerReloadListener(new GeneratedPackReloadListener(PackType.SERVER_DATA));
+                .registerReloadListener(new GeneratedPackReloadListener());
     }
 }

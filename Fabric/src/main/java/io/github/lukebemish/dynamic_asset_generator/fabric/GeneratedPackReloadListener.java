@@ -15,17 +15,18 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 
 public class GeneratedPackReloadListener implements SimpleSynchronousResourceReloadListener {
+
     @Override
     public ResourceLocation getFabricId() {
-        return new ResourceLocation("yourmodid", "generated_resources");
+        return new ResourceLocation("yourmodid", "generated_pack_reload");
     }
 
     @Override
-    public void reload(ResourceManager manager) {
+    public void onResourceManagerReload(ResourceManager resourceManager) {
         // Hook into reload cycle here
         DynamicAssetGenerator.CACHES.forEach((location, info) -> {
             if (info.cache().getPackType() == net.minecraft.server.packs.PackType.SERVER_DATA) {
-                // Do your regeneration logic here
+                // Your regeneration logic here
             }
         });
     }
