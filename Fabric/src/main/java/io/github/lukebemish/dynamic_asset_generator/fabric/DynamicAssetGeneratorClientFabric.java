@@ -12,8 +12,11 @@ import net.minecraft.server.packs.PackType;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.function.Supplier;
+
+import static io.github.lukebemish.dynamic_asset_generator.fabric.AssetGeneratorHelper.CLIENT_RESOURCES;
 
 public class DynamicAssetGeneratorClientFabric implements ClientModInitializer {
     public static RuntimeResourcePack RESOURCE_PACK;
@@ -21,8 +24,20 @@ public class DynamicAssetGeneratorClientFabric implements ClientModInitializer {
     public void onInitializeClient() {
 
         DynamicAssetGeneratorClient.init();
-        ResourceManagerHelper.get(PackType.CLIENT_RESOURCES)
-                .registerReloadListener(new GeneratedPackReloadListener());
+
+        // Create the runtime pack
+        RESOURCE_PACK = RuntimeResourcePack.create(new ResourceLocation(DynamicAssetGenerator.MOD_ID, "client_resources"));
+
+        byte[] bytes = new byte[3];
+        bytes[0] = 7;
+        RESOURCE_PACK.addData(ResourceLocation.tryParse("pack.mcmeta"), bytes);
+
+
+
+        RRPCallback.BEFORE_VANILLA.register(packs -> {
+            packs.add(CLIENT_RESOURCES);
+        });
+
     }
 }
 

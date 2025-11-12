@@ -32,6 +32,8 @@ public class ResourceDegrouperImpl implements io.github.lukebemish.dynamic_asset
     public List<? extends PackResources> unpackPacks(List<? extends PackResources> packs) {
         ArrayList<PackResources> packsOut = new ArrayList<>();
         packs.forEach(pack -> {
+            System.out.println("TESTEE PRINT: pack instanceof MyGroupResourcePack: " + (pack instanceof MyGroupResourcePack));
+           //TODO   NOT SURE IF THIS IS ACTUALLY FINISHED
             if (pack instanceof MyGroupResourcePack groupResourcePack) {
                 packsOut.addAll(groupResourcePack.getPacks());
             } else packsOut.add(pack);

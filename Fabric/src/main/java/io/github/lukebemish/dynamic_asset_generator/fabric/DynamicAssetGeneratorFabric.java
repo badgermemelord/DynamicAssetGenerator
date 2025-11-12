@@ -79,9 +79,25 @@ public class DynamicAssetGeneratorFabric implements ModInitializer {
     public void onInitialize() {
         DynamicAssetGenerator.init();
 
-        // Hook into the datapack pipeline
+
+
+        // Create the runtime pack
+        DATA_PACK = RuntimeResourcePack.create(new ResourceLocation(DynamicAssetGenerator.MOD_ID, "data_pack"));
+
+        // Register it with Fabric
+        RRPCallback.BEFORE_VANILLA.register(packs -> {
+            packs.add(DATA_PACK);
+        });
+
+
+
+
+
+        //AssetGeneratorHelper.init();
+
+/*        // Hook into the datapack pipeline
         ResourceManagerHelper.get(PackType.SERVER_DATA)
                 //.registerReloadListener(new GeneratedPackReloadListener(PackType.SERVER_DATA));
-                .registerReloadListener(new GeneratedPackReloadListener());
+                .registerReloadListener(new GeneratedPackReloadListener());*/
     }
 }
